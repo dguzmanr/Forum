@@ -1,0 +1,252 @@
+﻿body {
+    padding: 50px 0 20px 0;
+    background-color: #EEE;
+    background-image: url("/images/theme/bg-01.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.navbar{
+    box-shadow: 0 5px 4px -6px #000;
+}
+
+.navLogo{
+    background-position: center;
+    background-image: url("/images/app-logo-w.png");
+    background-size: 55%;
+    background-repeat: no-repeat;
+    width: 100px;
+    margin-right: 60px;
+    padding-right:55px;
+}
+
+.navbar.li{
+    font-weight: bold;
+}
+
+.sectionHeader{
+    background-color: rgba(0,0,0,0.9);
+    padding: 8px 0 24px 24px;
+}
+
+.sectionHeading{
+    color: white;
+    font-size: 1.3em;
+    font-family: 'Lato';
+    padding: 16px 0 16px 0;
+    border-bottom: 1px solid #335;
+    margin-bottom: 12px;
+}
+
+.postHeading {
+    color: white;
+    font-size: 1.1em;
+    font-family: 'Lato';
+    padding: 16px 0 16px 0;
+}
+
+.sectionInfo{
+    height: 400px;
+    background-color: white;
+}
+
+.frontPageSplash{
+    background-image: url("../images/theme/front-splash.jpg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.frontPageLearn {
+    font-family: 'Lato';
+    padding: 12px 0 0 32px;
+    height: 360px;
+}
+
+.sectionDescription{
+    color: #EEE;
+}
+
+.frontPageHeading {
+    font-size: 3.2em;
+    margin: 16px 0;
+    color: white;
+}
+
+.frontPageSubHeading {
+    font-size: 2em;
+    color: white;
+}
+
+.frontPageTopContainer {
+    padding: 40px 80px 42px 40px;
+    border: 1px solid #999;
+    background-color: #2569D5;
+    font-family: 'Lato';
+}
+
+.homeSearch {
+    width: 100%;
+    margin-top: 8px;
+    background: rgba(0,0,0,0.1);
+    padding: 8px;
+    border: 0px;
+    height: 2.3em;
+    font-size: 2.1em;
+    font-family: 'Lato';
+    font-weight: bold;
+    transition: ease-in 0.2s;
+}
+
+.homeSearch:focus {
+        border: none !important;
+        outline: none !important;
+        transition: ease-in 0.2s;
+        color: white;
+        background-color: rgba(0,0,0,0.7);
+        box-shadow: 0 5px 4px -6px #000;
+}
+
+.frontPageContent{
+    background-color: rgba(255,255,255,0.9);
+    padding: 16px;
+}
+
+#latestsPosts{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin: 4px 0 16px 0;
+}
+
+/*Post Page*/
+.postTitle{
+    font-family: 'Lato';
+    font-weight: bold;
+}
+
+.postSubTitle {
+    color: #888;
+    font-family: 'Lato';
+    font-size: 0.8em;
+}
+
+.postData{
+    display: inline-block;
+}
+
+.postDate {
+    color: #888;
+    font-family: 'Lato';
+    font-size: 0.8em;
+}
+
+.postLogo{
+    display: inline-block;
+    border-radius: 3px;
+    margin-right: 20px;
+    height: 40px;
+    width: 40px;
+    background-color: #ddd;
+}
+
+/*Forum Index*/
+#forumIndexTable td{
+    background-color: rgba(255,255,255,0.9);
+}
+
+#forumIndexTable tr:hover {
+    background-color: rgba(0,116,238,1); 
+}
+
+.forumData{
+    display: inline-block;
+}
+
+.forumTitle {
+    font-family: 'Lato';
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.forumSubTitle {
+    color: #888;
+    font-family: 'Lato';
+    font-size: 0.8em;
+}
+
+.forumDescription {
+    color: #555;
+    font-family: 'Lato';
+}
+
+.forumLogo{
+    border-radius: 3px;
+    float: left;
+    margin-right: 20px;
+    height: 40px;
+    width: 40px;
+    background-color: #ddd;
+    border: 1px solid #555;
+    background-size: 100%;
+}
+
+.forumPostCount {
+    color: #888;
+    font-family: 'Lato';
+    font-size: 0.9em;
+}
+
+.forumMemberCount {
+    color: #888;
+    font-family:'Lato';
+    font-size: 0.9em;
+}
+
+#forumIndexContent{
+    padding-bottom: 60px;
+    background-color: white;
+}
+
+.noPosts{
+    text-align: center;
+    padding-top: 30px;
+    font-family:'Lato';
+}
+
+/*Create Post*/
+.createPostSection{
+    background-color: #fff;
+    padding: 24px;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}

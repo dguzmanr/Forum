@@ -1,0 +1,52 @@
+﻿@model  Forums.Models.Forum.ForumTopicModel
+
+<h1>Welcome to the @Model.Forum.Name Forum</h1>
+
+<span id="headingBtn">
+    <a asp-controller="Post" 
+       asp-action="Create" 
+       asp-route-id="@Model.Forum.Id" 
+       class="btn btn-newPost">
+        Create Post
+    </a>
+</span>
+
+@if (Model.Posts.Any())
+{
+    <table class="table table-bordered table-hover">
+        <tbody>
+            @foreach (var post in Model.Posts)
+            {
+            <tr>
+                <td>
+                    <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                        @post.Title
+                    </a>
+                </td>
+                <td>
+                    @post.Author
+                </td>
+                <td>
+                    @post.DatePosted
+                </td>
+                <td>
+                    @post.RepliesCount
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="noPosts">
+        <h3>
+            It looks there are no @Model.Forum.Name posts yet. <br/>
+            Why not 
+            <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
+                <span>create</span>
+            </a>
+            one?
+        </h3>
+    </div>
+}
