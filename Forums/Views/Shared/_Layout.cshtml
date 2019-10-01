@@ -62,7 +62,7 @@
                 {
                     <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
                         <ul class="nav navbar-nav navbar-right">
-                            <li>Hello, @UserManager.GetUserName(User)</li>
+                            <li><p style="color:white; padding-top:6%">Hello, @UserManager.GetUserName(User)</p></li>
                             <li><a asp-controller="Account" asp-action="Logout">Sign Out</a></li>
                         </ul>
                     </form>
