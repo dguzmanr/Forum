@@ -17,7 +17,7 @@
                     <div class="upload">
                         <label class="btn btn-default btn-file">
                             Browse <input type="file" name="file" style="display:none" />
-                        </label>S
+                        </label>
                         <button type="submit" id="btn-profile" class="btn btn-default">Submit</button>
                     </div>
                 </form>
@@ -25,14 +25,13 @@
         </div>
         <div class="col-md-8">
             <span id="userName">@Model.UserName</span>
-            @if (Model.IsAdmin)
+            @if (@Model.IsAdmin)
             {
                 <span class="isAdmin">Admin</span>
             }
             <span id="userRating">Current Rating: @Model.UserRating</span>
             <span id="userEmailLabel">Email: @Model.Email</span>
             <span id="userCreatedLabel">Member Since: @Model.MemberSince</span>
-
         </div>
     </div>
 </div>

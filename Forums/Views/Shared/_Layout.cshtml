@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Forums</title>
 
-    <environment include="Development">
+    <environment include="Development, Production">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
-    <environment exclude="Development">
+    <environment exclude="Development, Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
@@ -39,7 +39,7 @@
                             <ul class="dropdown-menu">
                                 <li role="separator" class="divider"></li>
                                 <li class="dropdown-header">Profile</li>
-                                <li><a asp-controller="Profile" asp-action="Detail">My Profile</a></li>
+                                <li><a asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a></li>
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <li role="separator" class="divider"></li>
@@ -62,7 +62,11 @@
                 {
                     <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><p style="color:white; padding-top:6%">Hello, @UserManager.GetUserName(User)</p></li>
+                            <li>
+                                <a asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">
+                                    @UserManager.GetUserName(User)
+                                </a>
+                            </li>
                             <li>
                                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Sign Out</button>
                             </li>
@@ -77,12 +81,12 @@
         @RenderBody()
     </div>
 
-    <environment include="Development">
+    <environment include="Development, Production">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
-    <environment exclude="Development">
+    <environment exclude="Development, Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"

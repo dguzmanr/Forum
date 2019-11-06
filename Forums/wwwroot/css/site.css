@@ -270,7 +270,6 @@
     border-radius: 1px;
     width: 30px;
 }
-
 /* Custom Bottons*/
 .btn-back {
     background-color: #555;
@@ -412,25 +411,25 @@
 }
 
 /* User Profiles */
+.userProfile {
+    /*height: 140px;
+    width: 140px;
+    background-size: cover;
+    background-repeat: no-repeat;*/
+    padding: 32px 0 64px 24px;
+    background-color: #fff ;
+}
+
 .userProfileDetail {
     padding: 32px 0 64px 24px;
     background-color: #fff !important;
 }
 
-.userProfile {
-    height: 140px;
-    width: 140px;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-#userProfilePic {
+.userProfilePic {
     display: inline-block;
-    width: 200px;
-    height: 200px;
-    background-color: #ddd;
-    background-size: cover;
-    background-repeat: no-repeat;
+    width: 140px;
+    height: 140px;
+    background-size: 100%;
 }
 
 #userEmailLabel, #userBioLabel, #userCreatedLabel, #userRating, #userActiveLabel {
@@ -446,6 +445,14 @@
     font-family: 'Lato';
     font-size: 1.7em;
 }
+#userProfileImage {
+    display: inline-block;
+    background-size: 100%;
+    width: 140px;
+    height: 140px;
+    padding: 32px 0 64px 24px;
+    background-color: #fff;
+}
 
 /* Create Post */
 .createPostSection {
@@ -457,6 +464,7 @@
     padding: 18px;
     border: 1px dashed #00afcf;
     margin-bottom: 8px;
+    text-align: center;
 }
 
 .noBorder {
@@ -493,3 +501,4 @@
         display: none;
     }
 }
+

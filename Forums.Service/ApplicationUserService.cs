@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Forums.Service
 {
-    class ApplicationUserService : IApplicationUser
+    public class ApplicationUserService : IApplicationUser
     {
         private readonly ApplicationDbContext _context;
 
@@ -26,9 +26,21 @@ namespace Forums.Service
             return GetAll().FirstOrDefault(user=>user.Id == id);
         }
 
-        public Task IncrementRating(string id, Type type)
+        public async Task UpdateUserRating(string id, Type type)
         {
-            throw new NotImplementedException();
+            var user = GetUserById(id);
+            user.Rating = CaculateUserRating(type, user.Rating);
+            await _context.SaveChangesAsync();
+        }
+
+        private int CaculateUserRating(Type type, int userRating) {
+            var inc = 0;
+            if (type == typeof(Post))
+                inc = 1;
+
+            if (type == typeof(PostReply))
+                inc = 3;
+            return userRating+inc;
         }
 
         public async Task SetProfileImage(string id, Uri uri)

@@ -24,7 +24,7 @@ namespace Forums.Data
             var user = new ApplicationUser
             {
                 UserName = "ForumAdmin",
-                NormalizedUserName = "forumAdmin",
+                NormalizedUserName = "forumadmin",
                 Email = "admin@example.com",
                 NormalizedEmail = "admin@example.com",
                 EmailConfirmed = true,
@@ -39,10 +39,10 @@ namespace Forums.Data
             var hasAdminRole = _context.Roles.Any(roles => roles.Name == "Admin");
             if (!hasAdminRole) {
                 roleStore.CreateAsync(new IdentityRole {
-                    Name = "Admin", NormalizedName="admin"
+                    Name = "Admin",
+                    NormalizedName ="admin"
                 });
             }
-
             var hasSuperUser = _context.Users.Any(u => u.NormalizedUserName == user.UserName);
             if (!hasSuperUser) {
                 userStore.CreateAsync(user);

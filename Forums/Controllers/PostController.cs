@@ -2,6 +2,7 @@
 using Forums.Data.Models;
 using Forums.Models.Post;
 using Forums.Models.Reply;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,15 +15,17 @@ namespace Forums.Controllers
     public class PostController : Controller
     {
         private readonly IPost _postService;
+        private readonly IApplicationUser _applicationUser;
         private readonly IForum _forumService;
 
         private static UserManager<ApplicationUser> _userManager;
 
-        public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager)
+        public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager,IApplicationUser applicationUser)
         {
             _postService = postService;
             _forumService = forumService;
             _userManager = userManager;
+            _applicationUser = applicationUser;
         }
 
         public IActionResult Index(int id)
@@ -49,6 +52,7 @@ namespace Forums.Controllers
             return View(model);
         }
 
+        [Authorize]
         public IActionResult Create(int id)
         {
             // id is forum.Id
@@ -65,7 +69,10 @@ namespace Forums.Controllers
             return View(model);
         }
 
+
         [HttpPost]
+        [Authorize]
+
         public async Task<IActionResult> AddPost(NewPostModel model)
         {
             var userId = _userManager.GetUserId(User);
@@ -73,9 +80,10 @@ namespace Forums.Controllers
             var user =  _userManager.FindByIdAsync(userId).Result;
             var post = BuildPost(model, user);
 
-            _postService.Add(post).Wait(); // Block the current thread until the task is complete
+            await _postService.Add(post); // Block the current thread until the task is complete
 
             //Implemet user rating managment here
+            await _applicationUser.UpdateUserRating(userId, typeof(Post));
 
             return RedirectToAction("Index", "Post", new { id = post.Id });
         }

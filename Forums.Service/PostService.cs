@@ -23,6 +23,12 @@ namespace Forums.Service
             await _context.SaveChangesAsync();
         }
 
+        public async Task AddReply(PostReply reply)
+        {
+            _context.PostReplies.Add(reply);
+            await _context.SaveChangesAsync();
+        }
+
         public Task Delete(int id)
         {
             throw new NotImplementedException();
@@ -55,7 +61,9 @@ namespace Forums.Service
 
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
         {
-            return GetAll().Where(post => post.Title.Contains(searchQuery) || post.Content.Contains(searchQuery));
+            var normalized = searchQuery.ToLower();
+            return GetAll().Where(post => post.Title.ToLower().Contains(normalized) || 
+                                  post.Content.ToLower().Contains(normalized));
         }
 
         public IEnumerable<Post> GetLatestPosts(int nPosts)

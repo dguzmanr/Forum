@@ -39,6 +39,12 @@ namespace Forums.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public IActionResult Search(string searchQuery)
+        {
+            return RedirectToAction("Results", new { searchQuery });
+        }
+
         private ForumListingModel BuildForumListing(Post post)
         {
             var forum = post.Forum;
@@ -49,11 +55,6 @@ namespace Forums.Controllers
                 Name = forum.Title,
                 Description = forum.Description
             };
-        }
-
-        [HttpPost]
-        public IActionResult Search(string searchQuery) {
-            return RedirectToAction("Result", new { searchQuery });
         }
     }
 }

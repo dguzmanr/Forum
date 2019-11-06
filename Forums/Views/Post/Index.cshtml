@@ -18,7 +18,7 @@
             <a asp-controller="Profile" asp-action="Details" asp-route-id="@Model.AuthorId">
                 @Model.AuthorName
             </a>
-            <span class="postData">@Model.Created</span>
+            <span class="postDate">@Model.Created</span>
             @if (Model.IsAuthorAdmin)
             {
                 <span class="isAdmin smaller">Admin</span>
@@ -33,7 +33,7 @@
     <div class="row" id="replyDivider"></div>
     @if (User.Identity.IsAuthenticated)
     {
-        <div class="row">
+        <div class="row" id="postReplyRow">
             <span>
                 <a asp-controller="Reply" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-newReply">
                     Post Reply
@@ -46,26 +46,25 @@
     {
         foreach (var reply in Model.Replies)
         {
-            <div class="row ReplyContent">
-                <div class="col-md-3 replyAuthorContainer">
-                    <div class="portAuthorImage" style="background-image: url(@reply.AuthorImageUrl)">
-                        <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
-                            @reply.AuthorName
-                        </a>
-                        @if (reply.IsAuthorAdmin)
-                        {
-                            <div class="isAdmin smaller">Admin</div>
-                            <br />
-                        }
-                        <span>@reply.Created.ToString("")</span>
-                    </div>
-                    <div class="col-md-9 ReplyContentContainer">
-                        <div class="postContent">
-                            @Html.Raw(reply.ReplyContent)
-                        </div>
-                    </div>
+        <div class="row replyContent">
+            <div class="col-md-3 replyAuthorContainer">
+                <div class="postAuthorImage" style="background-image: url(@reply.AuthorImageUrl)"></div>
+                <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
+                    @reply.AuthorName
+                </a>
+                @if (reply.IsAuthorAdmin)
+                {
+                    <div class="isAdmin smaller">Admin</div>
+                    <br />
+                }
+                <span class="postDate">@reply.Created.ToString("")</span>
+            </div>
+            <div class="col-md-9 replyContentContainer">
+                <div class="postContent">
+                    @Html.Raw(reply.ReplyContent)
                 </div>
             </div>
+        </div>
         }
     }
     else
